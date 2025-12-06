@@ -1,0 +1,50 @@
+@echo off
+title Boot Mode Selector
+
+SET "SCRIPT_DIR=%~dp0"
+SET "MODES_FOLDER=%SCRIPT_DIR%Modes\"
+
+IF NOT EXIST "%MODES_FOLDER%" (
+    echo Error: The 'Modes' folder was not found in '%SCRIPT_DIR%'.
+    echo Please ensure the 'Modes' folder is in the same directory as Launcher.bat.
+    echo Press any key to exit...
+    pause > nul
+    exit /b
+)
+
+:title
+cls
+echo Select an action:
+echo 1 - Safe mode (without Internet)
+echo 2 - Safe mode (with Internet)
+echo 3 - Safe Mode (Command Line)
+echo 4 - Turn off Safe Mode (Return to Normal Boot)
+echo 0 - Exit
+
+set /p choice="Enter the desired number: "
+
+if "%choice%"=="1" call "%MODES_FOLDER%Sm_1.bat" & goto EndOfChoice
+if "%choice%"=="2" call "%MODES_FOLDER%Sm_2.bat" & goto EndOfChoice
+if "%choice%"=="3" call "%MODES_FOLDER%SM_3.bat" & goto EndOfChoice
+if "%choice%"=="4" call "%MODES_FOLDER%SM_Off.bat" & goto EndOfChoice
+if /i "%choice%"=="0" (
+    echo Exiting...
+    exit /b
+)
+
+echo Invalid choice. Please try again.
+goto title
+
+:EndOfChoice
+echo.
+echo Operation for selected mode completed.
+echo Press any key to return to the menu, or type 'R' to restart the system now...
+set /p return_choice=" "
+if /i "%return_choice%"=="R" (
+    echo Restarting system in 5 seconds...
+    shutdown /r /t 5
+) else (
+    goto title
+)
+
+exit /b

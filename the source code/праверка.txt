@@ -1,0 +1,25 @@
+@echo off 
+:title 
+cls 
+echo Select an action: 
+echo 1 - Safe mode (without Internet) 1 
+echo 2 - Safe mode (from the Internet) 2 
+echo 3 - Safe Mode (Command Line) 3
+echo 4 - test 4
+echo 0 - Exit 
+
+set /p choice="Enter the desired number: " 
+
+if "%choice%"=="1"  
+  ( call "Sm_1.bat" ) 
+ else if "%choice%"=="2"  
+  ( call "Sm_2.bat" )
+ else if "%choice%"=="3"
+  ( call "SM_3.bat" )
+ else if "%choice%"=="4"
+  ( call "SM.bat" )
+ else if /i "%choice%"=="Q"  
+  (exit) 
+ else  
+  (goto title) 
+ 
