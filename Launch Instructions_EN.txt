@@ -1,5 +1,0 @@
-Hello user, this is such a mini.bat file which lehko should switch the PC to safe mode.
-This code was written on cmd commands because of this, it is not necessary yet (I hope so)
-In Cmd, everything is in English in Russian, which has not yet been invented (I tried but failed)
-"In the new version, I will try to fix it and it will be in 2 variations"
-Launch the "Launcher"
